@@ -4,7 +4,7 @@ I noticed many people were having problems with low contrast VAEs while using
 novelAI based models, and too high of contrast VAEs while using Waifu Diffusion based models.
 
 People started to try to get in between by merging the VAEs, but if the only thing you are trying
-to change is saturation or contrast, but there are ways to keep your VAE optimal for your
+to change is saturation or contrast, there are ways to keep your VAE optimal for your
 model while still changing brightness and contrast.
 
 ## How it works
