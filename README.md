@@ -33,10 +33,20 @@ Args:
   - --contrast_operation: Operation to use for contrast (mul or add)
   - --brightness: Brightness number (optional)
   - --brightness_operation: Operation to use for brightness (mul or add)
+  - --patch_encoder: Apply inverse operation to encoder block of VAE (see below)
 
 mul refers to multiplication of the weights or biases by the number
 
 add refers to addition of the weights or biases by the number
+
+## Patch Encoder
+By default, we only are changing the output layer of the VAE.
+This is fine for normal generations, but anything that uses the encoder block of the VAE,
+(eg. hiresfix with an upscaler that doesn't use latents) will pass through our
+changes twice. `--patch_encoder` tries to alleviate this issue by applying the inverse
+operation to the first layer of the encoder. It seems to work well for hiresfix, however
+if you are using img2img with a low denoising strength, it can cause loss of quality.
+See [this github isue](https://github.com/sALTaccount/VAE-BlessUp/issues/1) for examples.
 
 ## Examples
 
