@@ -49,6 +49,12 @@ add refers to addition of the weights or biases by the number
 ### Lowering Contrast (model is Waifu Diffusion 1.5, kl-f8-anime2 VAE)
 ![4](example_images/4.png)
 
+# Download
+
+I'm going to put a few example VAEs here:
+
+https://drive.google.com/drive/folders/1x0O9n99JjbOy76yj9MpZU-LTJqswrglz?usp=sharing
+
 ### TODO
  - Upload VAEs
  - Per channel modification
