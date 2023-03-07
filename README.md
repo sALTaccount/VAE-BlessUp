@@ -4,22 +4,24 @@ I noticed many people were having problems with low contrast VAEs while using
 novelAI based models, and too high of contrast VAEs while using Waifu Diffusion based models.
 
 People started to try to get in between by merging the VAEs, but if the only thing you are trying
-to change is saturation or contrast, there are ways to keep your VAE optimal for your
+to change is saturation or contrast, but there are ways to keep your VAE optimal for your
 model while still changing brightness and contrast.
 
 ## How it works
 
 The output layer of the VAE is no longer latents but pixels. This means that we can do
 the same types of math we do with normal images, but built into the last layer of the VAE.
+You can think of whatever math you are doing as a post processing layer to the VAE, with no activation function.
+However, when there is no activation function, the layers can just simply be combined.
 
 ```python
-vae.decoder.conv_out.weight = nn.Parameter(vae.decoder.conv_out.weight * NUMBER)
-vae.decoder.conv_out.bias = nn.Parameter(vae.decoder.conv_out.bias * NUMBER)
+vae.decoder.conv_out.weight = nn.Parameter(vae.decoder.conv_out.weight * or + NUMBER)
+vae.decoder.conv_out.bias = nn.Parameter(vae.decoder.conv_out.bias * or + NUMBER)
 ```
 
 ## How to use
 
-Clone the repo and install requirements
+Clone the repo and install requirements, then run `bless_vae.py`
 
 Args:
 
