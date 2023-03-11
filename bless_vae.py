@@ -49,13 +49,13 @@ if args.contrast is not None:
 if args.brightness is not None:
     # bias affects brightness
     if args.brightness_operation == 'add':
-        vae.decoder.conv_out.bias = nn.Parameter(vae.decoder.conv_out.bias + args.contrast)
+        vae.decoder.conv_out.bias = nn.Parameter(vae.decoder.conv_out.bias + args.brightness)
         if args.patch_encoder:
-            vae.encoder.conv_in.bias = nn.Parameter(vae.encoder.conv_in.bias - args.contrast)
+            vae.encoder.conv_in.bias = nn.Parameter(vae.encoder.conv_in.bias - args.brightness)
     elif args.brightness_operation == 'mul':
-        vae.decoder.conv_out.bias = nn.Parameter(vae.decoder.conv_out.bias * args.contrast)
+        vae.decoder.conv_out.bias = nn.Parameter(vae.decoder.conv_out.bias * args.brightness)
         if args.patch_encoder:
-            vae.encoder.conv_in.bias = nn.Parameter(vae.encoder.conv_in.bias / args.contrast)
+            vae.encoder.conv_in.bias = nn.Parameter(vae.encoder.conv_in.bias / args.brightness)
     else:
         raise ValueError('Invalid brightness operation')
 
